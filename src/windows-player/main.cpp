@@ -3,9 +3,6 @@
 #include <ctime>
 #include <chrono>
 #include <thread>
-#include <iostream>
-
-using namespace std::chrono;
 
 int main(int argc, char **argv)
 {
@@ -32,16 +29,16 @@ int main(int argc, char **argv)
 	GetConsoleScreenBufferInfo(h, &screen);
 	FillConsoleOutputCharacterA(h, ' ', screen.dwSize.X * screen.dwSize.Y, {0, 0}, &buff);
 
-	microseconds total_delay{1000000 / fps};
+	std::chrono::microseconds total_delay{1000000 / fps};
 	std::string to_write = "";
 
-	auto start = steady_clock::now();
+	auto start = std::chrono::steady_clock::now();
 	while (!fin.eof())
 	{
-		auto curr = steady_clock::now();
+		auto curr = std::chrono::steady_clock::now();
 		if (curr - start >= total_delay)
 		{
-			start = steady_clock::now();
+			start = std::chrono::steady_clock::now();
 			for (int i = 0; i < height; i++)
 			{
 				std::getline(fin, to_write, '\n');
