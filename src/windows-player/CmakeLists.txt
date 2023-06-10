@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.0)
+project(windows-player)
+
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -D_DEBUG")
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/../../../build-windows-player)
+
+add_executable(windows-player main.cpp)
